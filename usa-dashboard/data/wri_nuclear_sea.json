@@ -1,0 +1,702 @@
+[
+ {
+  "id": "wri_arg0000029",
+  "name": "ATUCHA I (nuclear power plant, WRI)",
+  "lat": -33.967,
+  "lon": -59.2059,
+  "cat": "nuclear_site",
+  "country_iso3": "ARG",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 370.0 MW, commissioning year 1974.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_arg0000030",
+  "name": "ATUCHA II (nuclear power plant, WRI)",
+  "lat": -33.9674,
+  "lon": -59.2045,
+  "cat": "nuclear_site",
+  "country_iso3": "ARG",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 745.0 MW, commissioning year 2014.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_arg0000112",
+  "name": "EMBALSE (nuclear power plant, WRI)",
+  "lat": -32.2316,
+  "lon": -64.4422,
+  "cat": "nuclear_site",
+  "country_iso3": "ARG",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 648.0 MW, commissioning year 1984.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_bra0000100",
+  "name": "Almirante Álvaro Alberto - Unidade I (Antiga Angra I) (nuclear power plant, WRI)",
+  "lat": -23.0087,
+  "lon": -44.4574,
+  "cat": "nuclear_site",
+  "country_iso3": "BRA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 640.0 MW, commissioning year 1985. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_bra0000101",
+  "name": "Almirante Álvaro Alberto - Unidade II (Antiga Angra II) (nuclear power plant, WRI)",
+  "lat": -23.0072,
+  "lon": -44.4588,
+  "cat": "nuclear_site",
+  "country_iso3": "BRA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1350.0 MW, commissioning year 2000. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_can0002030",
+  "name": "Bruce A (nuclear power plant, WRI)",
+  "lat": 44.3391,
+  "lon": -81.5747,
+  "cat": "nuclear_site",
+  "country_iso3": "CAN",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 3220.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_can0002031",
+  "name": "Bruce B (nuclear power plant, WRI)",
+  "lat": 44.319,
+  "lon": -81.6027,
+  "cat": "nuclear_site",
+  "country_iso3": "CAN",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 3390.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_can0002043",
+  "name": "Darlington (nuclear power plant, WRI)",
+  "lat": 43.8697,
+  "lon": -78.7239,
+  "cat": "nuclear_site",
+  "country_iso3": "CAN",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 3740.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_can0002073",
+  "name": "Pickering A (nuclear power plant, WRI)",
+  "lat": 43.8107,
+  "lon": -79.0689,
+  "cat": "nuclear_site",
+  "country_iso3": "CAN",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1084.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_can0002074",
+  "name": "Pickering B (nuclear power plant, WRI)",
+  "lat": 43.8096,
+  "lon": -79.0639,
+  "cat": "nuclear_site",
+  "country_iso3": "CAN",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2160.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_can0002076",
+  "name": "Point Lepreau (nuclear power plant, WRI)",
+  "lat": 45.0686,
+  "lon": -66.4543,
+  "cat": "nuclear_site",
+  "country_iso3": "CAN",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 660.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_mex0001769",
+  "name": "Laguna Verde (nuclear power plant, WRI)",
+  "lat": 19.7208,
+  "lon": -96.4064,
+  "cat": "nuclear_site",
+  "country_iso3": "MEX",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1510.0 MW, commissioning year n/a. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0008055",
+  "name": "Arkansas Nuclear One (nuclear power plant, WRI)",
+  "lat": 35.311,
+  "lon": -93.2351,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1845.0 MW, commissioning year 1977.5542005420054. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006040",
+  "name": "Beaver Valley (nuclear power plant, WRI)",
+  "lat": 40.6219,
+  "lon": -80.4336,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1846.8 MW, commissioning year 1981.5000000000002. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006022",
+  "name": "Braidwood Generation Station (nuclear power plant, WRI)",
+  "lat": 41.2435,
+  "lon": -88.2286,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2449.8 MW, commissioning year 1988.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000046",
+  "name": "Browns Ferry (nuclear power plant, WRI)",
+  "lat": 34.7042,
+  "lon": -87.1189,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 3494.0 MW, commissioning year 1975.351459645106. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006014",
+  "name": "Brunswick Nuclear (nuclear power plant, WRI)",
+  "lat": 33.9597,
+  "lon": -78.0114,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2003.2 MW, commissioning year 1976.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006023",
+  "name": "Byron Generating Station (nuclear power plant, WRI)",
+  "lat": 42.0742,
+  "lon": -89.2819,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2449.8 MW, commissioning year 1986.0000000000002. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006153",
+  "name": "Callaway (nuclear power plant, WRI)",
+  "lat": 38.7589,
+  "lon": -91.7788,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1235.8 MW, commissioning year 1985.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006011",
+  "name": "Calvert Cliffs Nuclear Power Plant (nuclear power plant, WRI)",
+  "lat": 38.4344,
+  "lon": -76.4417,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1850.4 MW, commissioning year 1976.007782101167. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006036",
+  "name": "Catawba (nuclear power plant, WRI)",
+  "lat": 35.0514,
+  "lon": -81.0694,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2410.2 MW, commissioning year 1985.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000204",
+  "name": "Clinton Power Station (nuclear power plant, WRI)",
+  "lat": 40.1719,
+  "lon": -88.8339,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1138.3 MW, commissioning year 1987.0000000000002. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000371",
+  "name": "Columbia Generating Station (nuclear power plant, WRI)",
+  "lat": 46.4711,
+  "lon": -119.3339,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1200.0 MW, commissioning year 1985.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006145",
+  "name": "Comanche Peak (nuclear power plant, WRI)",
+  "lat": 32.2984,
+  "lon": -97.7855,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2430.0 MW, commissioning year 1991.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0008036",
+  "name": "Cooper Nuclear Station (nuclear power plant, WRI)",
+  "lat": 40.3628,
+  "lon": -95.6408,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 801.0 MW, commissioning year 1974.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006149",
+  "name": "Davis Besse (nuclear power plant, WRI)",
+  "lat": 41.5967,
+  "lon": -83.0861,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 925.2 MW, commissioning year 1977.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006099",
+  "name": "Diablo Canyon (nuclear power plant, WRI)",
+  "lat": 35.2115,
+  "lon": -120.8555,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2323.0 MW, commissioning year 1985.501076194576. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006000",
+  "name": "Donald C Cook (nuclear power plant, WRI)",
+  "lat": 41.9756,
+  "lon": -86.5652,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2285.3 MW, commissioning year 1976.4877259003194. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000869",
+  "name": "Dresden Generating Station (nuclear power plant, WRI)",
+  "lat": 41.39,
+  "lon": -88.27,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2018.6 MW, commissioning year 1970.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0001060",
+  "name": "Duane Arnold Energy Center (nuclear power plant, WRI)",
+  "lat": 42.1011,
+  "lon": -91.7781,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 679.5 MW, commissioning year 1975.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006051",
+  "name": "Edwin I Hatch (nuclear power plant, WRI)",
+  "lat": 31.9342,
+  "lon": -82.3447,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1848.0 MW, commissioning year 1977.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0001729",
+  "name": "Fermi (nuclear power plant, WRI)",
+  "lat": 41.9631,
+  "lon": -83.2581,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1281.0 MW, commissioning year 1986.9008587041374. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006072",
+  "name": "Grand Gulf (nuclear power plant, WRI)",
+  "lat": 32.0081,
+  "lon": -91.0478,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1440.0 MW, commissioning year 1985.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0003251",
+  "name": "H B Robinson (nuclear power plant, WRI)",
+  "lat": 34.4017,
+  "lon": -80.1589,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 768.6 MW, commissioning year 1971.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006015",
+  "name": "Harris (nuclear power plant, WRI)",
+  "lat": 35.6334,
+  "lon": -78.9556,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 950.9 MW, commissioning year 1987.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0002497",
+  "name": "Indian Point 2 (nuclear power plant, WRI)",
+  "lat": 41.2706,
+  "lon": -73.9527,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1299.0 MW, commissioning year 1973.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0008907",
+  "name": "Indian Point 3 (nuclear power plant, WRI)",
+  "lat": 41.2706,
+  "lon": -73.9526,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1012.0 MW, commissioning year 1976.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006110",
+  "name": "James A Fitzpatrick (nuclear power plant, WRI)",
+  "lat": 43.5214,
+  "lon": -76.4084,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 883.3 MW, commissioning year 1976.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006001",
+  "name": "Joseph M Farley (nuclear power plant, WRI)",
+  "lat": 31.2231,
+  "lon": -85.1116,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1776.4 MW, commissioning year 1979.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006026",
+  "name": "LaSalle Generating Station (nuclear power plant, WRI)",
+  "lat": 41.2455,
+  "lon": -88.6691,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2340.0 MW, commissioning year 1984.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006105",
+  "name": "Limerick (nuclear power plant, WRI)",
+  "lat": 40.2243,
+  "lon": -75.5874,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2277.0 MW, commissioning year 1988.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006038",
+  "name": "McGuire (nuclear power plant, WRI)",
+  "lat": 35.4331,
+  "lon": -80.9486,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2440.6 MW, commissioning year 1982.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000566",
+  "name": "Millstone (nuclear power plant, WRI)",
+  "lat": 41.3107,
+  "lon": -72.1677,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2162.9 MW, commissioning year 1981.793148088215. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0001922",
+  "name": "Monticello Nuclear Facility (nuclear power plant, WRI)",
+  "lat": 45.3338,
+  "lon": -93.8493,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 685.0 MW, commissioning year 1971.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0002589",
+  "name": "Nine Mile Point Nuclear Station (nuclear power plant, WRI)",
+  "lat": 43.5211,
+  "lon": -76.41,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1901.1 MW, commissioning year 1981.260901583294. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006168",
+  "name": "North Anna (nuclear power plant, WRI)",
+  "lat": 38.06,
+  "lon": -77.7897,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1960.4 MW, commissioning year 1979.5043358498267. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0003265",
+  "name": "Oconee (nuclear power plant, WRI)",
+  "lat": 34.7939,
+  "lon": -82.8986,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2666.7 MW, commissioning year 1974.002474969063. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006118",
+  "name": "PSEG Hope Creek Generating Station (nuclear power plant, WRI)",
+  "lat": 39.4666,
+  "lon": -75.5377,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1290.7 MW, commissioning year 1986.9999999999998. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0002410",
+  "name": "PSEG Salem Generating Station (nuclear power plant, WRI)",
+  "lat": 39.4625,
+  "lon": -75.5358,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2381.8 MW, commissioning year 1978.8596019816944. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0001715",
+  "name": "Palisades (nuclear power plant, WRI)",
+  "lat": 42.323,
+  "lon": -86.3146,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 811.8 MW, commissioning year 1972.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006008",
+  "name": "Palo Verde (nuclear power plant, WRI)",
+  "lat": 33.3881,
+  "lon": -112.8617,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 4209.6 MW, commissioning year 1986.6666666666665. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0003166",
+  "name": "Peach Bottom (nuclear power plant, WRI)",
+  "lat": 39.7589,
+  "lon": -76.2687,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2876.4 MW, commissioning year 1974.478723404255. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006020",
+  "name": "Perry (nuclear power plant, WRI)",
+  "lat": 41.8006,
+  "lon": -81.1439,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1311.6 MW, commissioning year 1987.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0004046",
+  "name": "Point Beach Nuclear Plant (nuclear power plant, WRI)",
+  "lat": 44.2806,
+  "lon": -87.5369,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1311.0 MW, commissioning year 1971.4523264683448. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0001925",
+  "name": "Prairie Island (nuclear power plant, WRI)",
+  "lat": 44.622,
+  "lon": -92.6333,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1186.2 MW, commissioning year 1974.0000000000002. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000880",
+  "name": "Quad Cities Generating Station (nuclear power plant, WRI)",
+  "lat": 41.7261,
+  "lon": -90.3103,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2018.6 MW, commissioning year 1973.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006122",
+  "name": "R E Ginna Nuclear Power Plant (nuclear power plant, WRI)",
+  "lat": 43.2777,
+  "lon": -77.3099,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 614.0 MW, commissioning year 1970.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006462",
+  "name": "River Bend (nuclear power plant, WRI)",
+  "lat": 30.757,
+  "lon": -91.3327,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1035.9 MW, commissioning year 1986.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006115",
+  "name": "Seabrook (nuclear power plant, WRI)",
+  "lat": 42.8992,
+  "lon": -70.8489,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1242.0 MW, commissioning year 1990.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006152",
+  "name": "Sequoyah (nuclear power plant, WRI)",
+  "lat": 35.2267,
+  "lon": -85.0917,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2441.0 MW, commissioning year 1981.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006251",
+  "name": "South Texas Project (nuclear power plant, WRI)",
+  "lat": 28.795,
+  "lon": -96.0481,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2708.6 MW, commissioning year 1988.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006045",
+  "name": "St Lucie (nuclear power plant, WRI)",
+  "lat": 27.3486,
+  "lon": -80.2464,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2160.0 MW, commissioning year 1979.5. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0003806",
+  "name": "Surry (nuclear power plant, WRI)",
+  "lat": 37.1661,
+  "lon": -76.6986,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1695.0 MW, commissioning year 1973.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006103",
+  "name": "TalenEnergy Susquehanna (nuclear power plant, WRI)",
+  "lat": 41.0919,
+  "lon": -76.1462,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2532.0 MW, commissioning year 1984.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000621",
+  "name": "Turkey Point (nuclear power plant, WRI)",
+  "lat": 25.4356,
+  "lon": -80.3308,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2861.2 MW, commissioning year 1987.5449461764294. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0006127",
+  "name": "V C Summer (nuclear power plant, WRI)",
+  "lat": 34.2983,
+  "lon": -81.3153,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1029.6 MW, commissioning year 1984.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000649",
+  "name": "Vogtle (nuclear power plant, WRI)",
+  "lat": 33.1427,
+  "lon": -81.7625,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2430.0 MW, commissioning year 1988.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0004270",
+  "name": "Waterford 3 (nuclear power plant, WRI)",
+  "lat": 29.9953,
+  "lon": -90.4716,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1199.8 MW, commissioning year 1985.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0007722",
+  "name": "Watts Bar Nuclear Plant (nuclear power plant, WRI)",
+  "lat": 35.6021,
+  "lon": -84.7895,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 2539.8 MW, commissioning year 2006.0000000000002. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ },
+ {
+  "id": "wri_usa0000210",
+  "name": "Wolf Creek Generating Station (nuclear power plant, WRI)",
+  "lat": 38.2393,
+  "lon": -95.6898,
+  "cat": "nuclear_site",
+  "country_iso3": "USA",
+  "note": "Listed as a nuclear plant in the WRI Global Power Plant Database: 1267.7 MW, commissioning year 1985.0. Operating status in 2026 is not re-verified in this build.",
+  "source": "WRI Global Power Plant Database (CC-BY 4.0)"
+ }
+]

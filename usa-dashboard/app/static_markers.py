@@ -1,0 +1,311 @@
+"""
+Fixed reference points for the USA dashboard: the United States (lower 48, Alaska, Hawaii, Puerto Rico), Canada, Mexico,
+Central America, the Caribbean, South America, Greenland, Iceland and the Falklands, with the Atlantic, Pacific and Arctic
+approaches. India is outside the frame and has no entries.
+
+Each point carries its status, date and source in `note` and `source`. Points marked "not verified in this build" come from
+public knowledge that this build's searches did not confirm; they are shown, but treat them as unconfirmed.
+Coordinates for bases are approximate (the base or town centre). Open sources rarely publish base perimeters.
+Missile, nuclear and cyber sites are listed for their public status only; nothing here gives holdings, security details
+or targeting information. Nothing here is a targeting product: the dashboard maps publicly reported locations and events.
+"""
+import json
+import os
+
+
+def M(id, name, lat, lon, cat, note, source, aliases=()):
+    al = list(aliases) or [name.split(":")[0].split(" (")[0].strip().lower()]
+    return {"id": id, "name": name, "lat": lat, "lon": lon, "cat": cat, "note": note, "source": source, "aliases": al}
+
+
+MARKERS = [
+    # ---------- Capitals ----------
+    M("cap_washington", "Washington, D.C. (capital, United States)", 38.9072, -77.0369, "capital", "Capital of the United States; the Pentagon and the Department of Defense are in the Washington area.", "public information"),
+    M("cap_ottawa", "Ottawa (capital, Canada)", 45.4215, -75.6972, "capital", "Capital of Canada; National Defence Headquarters is in Ottawa (Canadian Armed Forces listing, 2026).", "Canadian Armed Forces (Wikipedia, 2026)"),
+    M("cap_mexico", "Mexico City (capital, Mexico)", 19.4326, -99.1332, "capital", "Capital of Mexico.", "public information"),
+    M("cap_havana", "Havana (capital, Cuba)", 23.1136, -82.3666, "capital", "Capital of Cuba. Guantánamo Bay is in the south-east of the island (see naval station).", "public information"),
+    M("cap_brasilia", "Brasília (capital, Brazil)", -15.7939, -47.8828, "capital", "Capital of Brazil.", "public information"),
+    M("cap_buenos_aires", "Buenos Aires (capital, Argentina)", -34.6037, -58.3816, "capital", "Capital of Argentina.", "public information"),
+    M("cap_santiago", "Santiago (capital, Chile)", -33.4489, -70.6693, "capital", "Capital of Chile.", "public information"),
+    M("cap_lima", "Lima (capital, Peru)", -12.0464, -77.0428, "capital", "Capital of Peru.", "public information"),
+    M("cap_bogota", "Bogotá (capital, Colombia)", 4.7110, -74.0721, "capital", "Capital of Colombia.", "public information"),
+    M("cap_caracas", "Caracas (capital, Venezuela)", 10.4806, -66.9036, "capital", "Capital of Venezuela.", "public information"),
+    M("cap_quito", "Quito (capital, Ecuador)", -0.1807, -78.4678, "capital", "Capital of Ecuador.", "public information"),
+    M("cap_la_paz", "La Paz (seat of government, Bolivia)", -16.5000, -68.1500, "capital", "Seat of government of Bolivia; the constitutional capital is Sucre.", "public information"),
+    M("cap_asuncion", "Asunción (capital, Paraguay)", -25.2637, -57.5759, "capital", "Capital of Paraguay.", "public information"),
+    M("cap_montevideo", "Montevideo (capital, Uruguay)", -34.9011, -56.1645, "capital", "Capital of Uruguay.", "public information"),
+    M("cap_georgetown", "Georgetown (capital, Guyana)", 6.8013, -58.1551, "capital", "Capital of Guyana.", "public information"),
+    M("cap_paramaribo", "Paramaribo (capital, Suriname)", 5.8520, -55.2038, "capital", "Capital of Suriname.", "public information"),
+    M("cap_cayenne", "Cayenne (prefecture, French Guiana)", 4.9224, -52.3135, "capital", "Prefecture of French Guiana (France); Europe's spaceport is at Kourou nearby.", "public information"),
+    M("cap_panama", "Panama City (capital, Panama)", 8.9824, -79.5199, "capital", "Capital of Panama.", "public information"),
+    M("cap_nuuk", "Nuuk (capital, Greenland)", 64.1835, -51.7214, "capital", "Capital of Greenland (Denmark). Denmark's Joint Arctic Command is based mainly here (Patriot Post, 2026).", "Patriot Post (2026); public information"),
+    M("cap_reykjavik", "Reykjavík (capital, Iceland)", 64.1466, -21.9426, "capital", "Capital of Iceland. Iceland has no standing armed forces (public information).", "public information"),
+    M("cap_stanley", "Stanley (capital, Falkland Islands)", -51.6971, -57.8517, "capital", "Capital of the Falkland Islands (UK-administered; Argentina claims sovereignty).", "public information"),
+
+    # ---------- US command, strategic and air-defence installations ----------
+    M("peterson", "Peterson Space Force Base (Colorado Springs): NORAD and US Northern Command headquarters", 38.8226, -104.7007, "cantonment",
+      "NORAD and USNORTHCOM share their headquarters here; Space Base Delta 1 is based here. Position approximate.",
+      "NORAD (norad.mil); Wikipedia (NORAD; Peterson SFB)"),
+    M("cheyenne", "Cheyenne Mountain Space Force Station (Colorado): NORAD alternate command centre", 38.7450, -104.8460, "cantonment",
+      "Alternate Joint Operations Center for NORAD and USNORTHCOM; a crew-training site (NORAD fact sheet). Position approximate.",
+      "NORAD fact sheet; Wikipedia (Cheyenne Mountain Space Force Station)"),
+    M("offutt", "Offutt Air Force Base (Nebraska): US Strategic Command headquarters", 41.1183, -95.9125, "cantonment",
+      "STRATCOM headquarters and Global Operations Center. Its alternate missile-warning centre is in the underground command complex (stratcom.mil; Wikipedia). Position approximate.",
+      "stratcom.mil (2026); Wikipedia (United States Strategic Command)"),
+    M("fort_meade", "Fort George G. Meade (Maryland): NSA and US Cyber Command headquarters", 39.1072, -76.7490, "cyber_hub",
+      "The NSA and USCYBERCOM share the headquarters; CYBERCOM is a unified combatant command overseen by the NSA director (EBSCO; CRS Defense Primer IF13042).",
+      "EBSCO (2026); CRS Defense Primer (IF13042)"),
+    M("barksdale", "Barksdale Air Force Base (Louisiana): Air Force Global Strike Command headquarters", 32.5018, -93.6628, "us_base",
+      "Headquarters of Air Force Global Strike Command, which runs the bombers and the ICBMs (USSTRATCOM subordinate-command listing). Position approximate.",
+      "Wikipedia (USSTRATCOM subordinate commands)"),
+    M("redstone", "Redstone Arsenal (Alabama): Army Forces Strategic Command headquarters", 34.6800, -86.6700, "cantonment",
+      "Army Forces Strategic Command headquarters (Wikipedia, USSTRATCOM subordinate units). Position approximate.",
+      "Wikipedia (USSTRATCOM subordinate units)"),
+    M("elmendorf", "Elmendorf-Richardson (Alaska): NORAD regional headquarters for Alaska", 61.2510, -149.8060, "us_base",
+      "One of NORAD's three regional headquarters (with Winnipeg and Tyndall); NORAD (norad.mil). Position approximate.",
+      "NORAD (norad.mil)"),
+    M("tyndall", "Tyndall Air Force Base (Florida): NORAD regional headquarters (continental US east)", 30.0700, -85.5750, "us_base",
+      "Headquarters of the US air defence region (CONR), one of NORAD's three regional headquarters (NORAD; Wikipedia). Position approximate.",
+      "NORAD (norad.mil); Wikipedia (NORAD)"),
+    M("winnipeg_norad", "CFB Winnipeg (Manitoba): NORAD regional headquarters for Canada", 49.9100, -97.2400, "air_base",
+      "NORAD's Canadian region headquarters (norad.mil). Position approximate.",
+      "NORAD (norad.mil); Canadian Armed Forces listing (2026)"),
+    M("nuuk_arctic", "Joint Arctic Command (Nuuk, Greenland): Danish military HQ for the Arctic", 64.1800, -51.7200, "cantonment",
+      "Denmark's Joint Arctic Command is primarily located in Nuuk, with presence at Kangerlussuaq, Station Nord and Daneborg (Patriot Post, 2026). Position approximate.",
+      "Patriot Post (2026); Reuters (via RT, Sep 2026)"),
+
+    # ---------- Pituffik and Arctic approaches (Greenland, Iceland, Canada) ----------
+    M("pituffik", "Pituffik Space Base (Greenland): US Space Force; missile warning and space surveillance", 76.5312, -68.7032, "us_base",
+      "Renamed in 2023 (formerly Thule). Home of the 821st Space Base Group within Space Base Delta 1; about 150 US personnel (Reuters via RT, Sep 2026). Danish personnel also work on the base (The Watch, Sep 2026). Position approximate.",
+      "Wikipedia (Pituffik Space Base); The Watch (Sep 2026); Reuters (via RT, Sep 2026)"),
+    M("kangerlussuaq", "Kangerlussuaq Airport (Greenland): Danish Arctic Command hangar; first F-35 landing on the island", 67.0122, -50.7116, "air_base",
+      "Two Royal Danish Air Force F-35As landed here on 16 Sep 2026, the first F-35 landing on Greenland (migflug, Sep 2026). Position approximate.",
+      "migflug (Sep 2026); The Watch (Sep 2026)"),
+    M("keflavik", "Keflavík (Iceland): NATO staging base for Arctic Sentry; former US Navy base", 63.9850, -22.6056, "air_base",
+      "Danish F-35As flew from Keflavík to Greenland in Sep 2026 under NATO's Arctic Sentry activity (migflug). Iceland has no standing armed forces; the former US base is now a civil and NATO-used airfield (public information). Position approximate.",
+      "migflug (Sep 2026); public information"),
+    M("cfb_alert", "CFS Alert (Nunavut): northernmost Canadian Forces station", 82.5017, -62.3481, "cantonment",
+      "Listed under 8 Wing Trenton; a Canadian Forces station in Nunavut (Canadian Armed Forces listing, 2026). Position approximate.",
+      "Canadian Armed Forces (Wikipedia, 2026)"),
+    M("cfb_goose_bay", "CFB Goose Bay (Labrador): NORAD operations and NATO low-level flying", 53.3192, -60.4258, "air_base",
+      "5 Wing; NORAD operations; RAFU Goose Bay provides low-level training for NATO allies (Canadian Armed Forces listing, 2026). Position approximate.",
+      "Canadian Armed Forces (Wikipedia, 2026)"),
+    M("cfb_bagotville", "CFB Bagotville (Quebec): fighter wings 2 and 3 Wing", 48.3306, -70.9961, "air_base",
+      "2 Wing and 3 Wing are based here (Canadian Armed Forces listing, 2026). Position approximate.",
+      "Canadian Armed Forces (Wikipedia, 2026)"),
+    M("cfb_cold_lake", "CFB Cold Lake (Alberta): 4 Wing; fighter training and the Primrose weapons range", 54.4081, -110.2789, "air_base",
+      "4 Wing; fighter training; the Cold Lake and Primrose air weapons ranges (Canadian Armed Forces listing; Academic Kids, 2026). Position approximate.",
+      "Canadian Armed Forces (Wikipedia, 2026)"),
+    M("cfb_trenton", "CFB Trenton (Ontario): 8 Wing; air-to-air refuelling, strategic airlift and search and rescue", 44.1192, -77.5281, "air_base",
+      "8 Wing: aerial refuelling, tactical and strategic airlift, search and rescue, and VIP transport (Canadian Armed Forces listing, 2026). Position approximate.",
+      "Canadian Armed Forces (Wikipedia, 2026)"),
+    M("falklands_mp", "RAF Mount Pleasant (Falkland Islands): UK air base", -51.8222, -58.4472, "air_base",
+      "Replaced RAF Navy Point as the Falklands air base; the search-and-rescue detachment moved here when it opened (Wikipedia, RAF Navy Point). Position approximate.",
+      "Wikipedia (RAF Navy Point)"),
+
+    # ---------- US Navy: fleet and submarine bases ----------
+    M("kings_bay", "Naval Submarine Base Kings Bay (Georgia): Atlantic Trident and guided-missile submarine base", 30.7930, -81.5200, "submarine_base",
+      "Home port of the Ohio-class ballistic-missile submarines and the guided-missile submarines USS Florida and USS Georgia; the only Atlantic base able to support the Trident II D5 (Navy base listings, 2026). Position approximate.",
+      "Navy base listings (2026); Naval Technology; Wikipedia (Naval Submarine Base Kings Bay)"),
+    M("bangor", "Naval Base Kitsap-Bangor (Washington): Pacific Trident submarine base", 47.7300, -122.7100, "submarine_base",
+      "The Bangor waterfront is one of the two Trident bases. The adjacent Strategic Weapons Facility Pacific maintains the Trident II missiles and stores spare warheads (Wikipedia; Global Military, Aug 2026). Position approximate.",
+      "Wikipedia (Naval Submarine Base Bangor); Global Military (Aug 2026)"),
+    M("pearl", "Joint Base Pearl Harbor-Hickam (Hawaii): Pacific Fleet headquarters area and submarine base", 21.3500, -157.9700, "submarine_base",
+      "Described as the main submarine base for the US Pacific (Marine Insight, 2026). Joint base formed in 2010 from Pearl Harbor and Hickam. Position approximate.",
+      "Marine Insight (2026); Naval Technology"),
+    M("new_london", "Naval Submarine Base New London (Groton, Connecticut): attack submarines (not verified in this build)", 41.3900, -72.0900, "submarine_base",
+      "Attack-submarine base on the Thames River (public information). Not verified in this build.", "public information (not verified in this build)"),
+    M("norfolk", "Naval Station Norfolk (Virginia): world's largest naval station; Fleet Forces Command headquarters", 36.9463, -76.3144, "navy_base",
+      "About 75 ships and 134 aircraft; headquarters of the US Navy's Fleet Forces Command (Naval Technology; Marine Insight, 2026). Position approximate.",
+      "Naval Technology (2026); Marine Insight (2026)"),
+    M("san_diego", "Naval Base San Diego (California): Pacific Fleet homeport", 32.7000, -117.1500, "navy_base",
+      "Homeport for Pacific Fleet surface ships; about 48,000 military and civilian personnel (Naval Technology; Bolt Flight, 2026). Position approximate.",
+      "Naval Technology (2026); Bolt Flight (2026)"),
+    M("mayport", "Naval Station Mayport (Jacksonville, Florida)", 30.3950, -81.4000, "navy_base",
+      "Listed in the Navy's installation directory (NAVYWEEK, 2026). Position approximate.", "NAVYWEEK (2026)"),
+    M("pensacola", "Naval Air Station Pensacola (Florida): cradle of naval aviation", 30.3500, -87.3000, "navy_base",
+      "Listed in the Navy's installation directory (NAVYWEEK, 2026). Position approximate.", "NAVYWEEK (2026)"),
+    M("everett", "Naval Station Everett (Washington)", 47.9800, -122.2200, "navy_base",
+      "Listed in the Navy's installation directory (NAVYWEEK, 2026). Position approximate.", "NAVYWEEK (2026)"),
+    M("great_lakes", "Naval Station Great Lakes (Illinois): Navy training command", 42.3000, -87.8200, "navy_base",
+      "Listed in the Navy's installation directory (NAVYWEEK, 2026). Position approximate.", "NAVYWEEK (2026)"),
+    M("guantanamo", "Naval Station Guantánamo Bay (Cuba): leased by the US since 1903", 19.9000, -75.1500, "navy_base",
+      "Coaling station and naval base since 1903; garrison Joint Task Force Guantánamo; Cuba disputes the lease (Wikipedia, 2026). Position approximate.",
+      "Wikipedia (Guantanamo Bay Naval Base)"),
+    M("esquimalt", "CFB Esquimalt (Victoria, British Columbia): Maritime Forces Pacific; Victoria-class submarines", 48.4500, -123.4300, "submarine_base",
+      "Pacific fleet headquarters; home port for the Victoria-class submarines (Canada.ca; Global Military, 2026). Position approximate.",
+      "Canada.ca (Victoria-class submarines); Global Military (2026)"),
+    M("halifax", "CFB Halifax (Nova Scotia): Maritime Forces Atlantic headquarters and dockyard", 44.6600, -63.5600, "navy_base",
+      "Atlantic fleet headquarters and dockyard; Canada.ca lists the Victoria-class submarines with CFB Halifax (port assignment not confirmed in this build). Position approximate.",
+      "Canada.ca (2026); Wikipedia (List of current ships of the Royal Canadian Navy)"),
+
+    # ---------- Strategic missiles (ICBM wings, Sentinel and missile defence) ----------
+    M("minot", "Minot Air Force Base (North Dakota): 91st Missile Wing, Minuteman III ICBMs", 48.4158, -101.3581, "missile_base",
+      "One of three ICBM wings. Minuteman III stays in service during the transition to the Sentinel missile (Air & Space Forces; The Electric, 2026). Position approximate.",
+      "Air & Space Forces (2026); The Electric (2026)"),
+    M("malmstrom", "Malmstrom Air Force Base (Montana): 341st Missile Wing, Minuteman III; Sentinel construction planned", 47.5044, -111.1828, "missile_base",
+      "One of three ICBM wings. First on-base Sentinel construction is planned here (The Electric, 2026). Position approximate.",
+      "The Electric (2026); Air & Space Forces (2026)"),
+    M("warren", "F.E. Warren Air Force Base (Wyoming): ICBM wing, Minuteman III; Sentinel planned", 41.1456, -104.8653, "missile_base",
+      "One of three ICBM wings; the Sentinel missile is planned here (Interesting Engineering, Sep 2026). Position approximate.",
+      "Interesting Engineering (Sep 2026); Air & Space Forces (2026)"),
+    M("vandenberg_icbm", "Vandenberg Space Force Base (California): Minuteman III test launches (3 March and 20 May 2026)", 34.7420, -120.5724, "missile_base",
+      "Operational test launches of unarmed Minuteman III missiles: GT 255 on 3 Mar 2026 (two test reentry vehicles) and GT 256 on 20 May 2026. The missiles rotate among the three ICBM wings (Space Force; Stripes, 2026). Position approximate.",
+      "spaceforce.mil (May 2026); Stripes (Mar 2026); The Electric (Feb 2026)"),
+    M("fort_greely", "Fort Greely (Alaska): ground-based midcourse missile-defence interceptors (not verified in this build)", 63.9800, -145.7300, "missile_base",
+      "Public information; the interceptor count and status were not verified in this build.", "public information (not verified in this build)"),
+
+    # ---------- Nuclear weapons complex, laboratories and waste (public status only) ----------
+    M("pantex", "Pantex Plant (Carson County, Texas): nuclear weapons assembly, dismantlement and maintenance", 35.3083, -101.5617, "nuclear_site",
+      "The NNSA's primary site for the final assembly, dismantlement and maintenance of nuclear weapons. Plutonium pits from retired weapons are held in interim storage. The last new weapon was completed in 1991 (NNSA; Pantex). Position approximate.",
+      "Pantex (pantex.energy.gov, 2026); NNSA; LASG"),
+    M("y12", "Y-12 National Security Complex (Oak Ridge, Tennessee): uranium processing, components and storage", 35.9900, -84.2600, "nuclear_site",
+      "Manages and stores highly enriched uranium and produces weapon components and secondaries (DNFSB; Los Alamos National Laboratory, 2026). Position approximate.",
+      "DNFSB (2026); LANL (2026)"),
+    M("srs", "Savannah River Site (Aiken, South Carolina): tritium production and nuclear materials", 33.2700, -81.7000, "nuclear_site",
+      "A 310 sq-mile DOE site near Aiken; supports tritium production and nuclear materials activities (CRS R45306; Arms Control Association). Position approximate.",
+      "CRS R45306 (2019 edition); Arms Control Association (2026)"),
+    M("wipp", "Waste Isolation Pilot Plant (Carlsbad, New Mexico): geologic repository for defence transuranic waste", 32.3700, -104.0300, "nuclear_site",
+      "Plutonium-contaminated (transuranic) waste from weapons facilities such as Los Alamos, Savannah River and Pantex (CRS R45306). Position approximate.",
+      "CRS R45306 (2019 edition)"),
+    M("kirtland", "Kirtland Air Force Base (Albuquerque): Kirtland Underground Munitions Maintenance and Storage Complex", 35.0400, -106.6100, "nuclear_site",
+      "The complex was activated in 1992. An advocacy group (Nukewatch) describes it as the largest nuclear-weapons storage facility in the US; the government does not publish holdings and none are stated here. Position approximate.",
+      "Nukewatch (advocacy source, citing the ABQ Journal)"),
+    M("los_alamos", "Los Alamos National Laboratory (New Mexico): nuclear weapons design", 35.8800, -106.3000, "nuclear_site",
+      "Weapons design laboratory of the nuclear security enterprise (CRS R45306). Position approximate.", "CRS R45306 (2019 edition)"),
+    M("sandia", "Sandia National Laboratories (Albuquerque): weapons engineering", 35.0500, -106.5400, "nuclear_site",
+      "Engineering laboratory of the nuclear security enterprise (CRS R45306). Position approximate.", "CRS R45306 (2019 edition)"),
+    M("livermore", "Lawrence Livermore National Laboratory (California): nuclear weapons design", 37.6900, -121.7000, "nuclear_site",
+      "Design laboratory of the nuclear security enterprise (CRS R45306). Position approximate.", "CRS R45306 (2019 edition)"),
+    M("nnss", "Nevada National Security Site (Nye County, Nevada): former underground test site", 36.9000, -116.0500, "nuclear_site",
+      "Former underground nuclear test site, now a stockpile-stewardship and research site (CRS R45306). Position approximate.", "CRS R45306 (2019 edition)"),
+    M("hanford", "Hanford Site (Richland, Washington): legacy plutonium production and waste (not verified in this build)", 46.5500, -119.5500, "nuclear_site",
+      "Public information: former plutonium production site with legacy waste. Not verified in this build.", "public information (not verified in this build)"),
+    M("inl", "Idaho National Laboratory (Idaho): reactor research and spent-fuel management (not verified in this build)", 43.5200, -112.9500, "nuclear_site",
+      "Public information. Not verified in this build.", "public information (not verified in this build)"),
+    M("kcnsc", "Kansas City National Security Campus (Missouri): non-nuclear weapons components", 39.0300, -94.4500, "defense_industry",
+      "Manufactures non-nuclear components for the stockpile (Arms Control Association, 2026). Position approximate.", "Arms Control Association (2026)"),
+    M("electric_boat", "Electric Boat (Groton, Connecticut): submarine builder (not verified in this build)", 41.3600, -72.0700, "defense_industry",
+      "Public information: the principal US submarine builder. Not verified in this build.", "public information (not verified in this build)"),
+    M("newport_news", "Newport News Shipbuilding (Virginia): aircraft carriers and submarines (not verified in this build)", 36.9800, -76.4300, "defense_industry",
+      "Public information: aircraft-carrier and submarine yard. Not verified in this build.", "public information (not verified in this build)"),
+    M("halifax_yard", "Halifax Shipyard (Nova Scotia): Canadian naval shipbuilding (not verified in this build)", 44.6500, -63.5800, "defense_industry",
+      "Public information: Canadian naval shipbuilder. Not verified in this build.", "public information (not verified in this build)"),
+
+    # ---------- Space launch and tracking ----------
+    M("cape", "Cape Canaveral Space Force Station (Florida): Eastern Range launch complexes", 28.4890, -80.5780, "space_site",
+      "Primary launch site for the Space Force's Eastern Range; SLC-40, SLC-41 and SLC-46 are active (Wikipedia; Spaceflight Now, 2026). Position approximate.",
+      "Wikipedia (Cape Canaveral SFS); Spaceflight Now (2026)"),
+    M("ksc", "Kennedy Space Center, Launch Complex 39 (Florida): SLS and Falcon launches", 28.6080, -80.6040, "space_site",
+      "SLS launched Artemis II from Pad 39B on 1 Apr 2026; a Falcon Heavy launched the Roman space telescope from Launch Complex 39 on 30 Aug 2026 (Wikipedia). Position approximate.",
+      "Wikipedia (Launch Complex 39; 2026)"),
+    M("vandenberg_space", "Vandenberg Space Force Base (California): West Coast launch complexes", 34.7450, -120.5800, "space_site",
+      "Falcon 9 launches from SLC-4E and Firefly Alpha from SLC-2 (Spaceflight Now, 2026). Position approximate.",
+      "Spaceflight Now (2026)"),
+    M("kaena", "Kaena Point Space Force Station (Hawaii)", 21.5700, -158.2700, "space_site",
+      "Part of Space Base Delta 1 (Wikipedia). Position approximate.", "Wikipedia (Space Base Delta 1)"),
+    M("new_boston", "New Boston Space Force Station (New Hampshire)", 42.9400, -71.8500, "space_site",
+      "Part of Space Base Delta 1 (Wikipedia). Position approximate.", "Wikipedia (Space Base Delta 1)"),
+    M("wallops", "Wallops Flight Facility (Virginia): NASA range and launch site (not verified in this build)", 37.9400, -75.4700, "space_site",
+      "Public information; not verified in this build.", "public information (not verified in this build)"),
+    M("kodiak", "Kodiak Launch Complex (Alaska) (not verified in this build)", 57.4300, -152.3400, "space_site",
+      "Public information; not verified in this build.", "public information (not verified in this build)"),
+    M("starbase", "Starbase (Boca Chica, Texas): SpaceX launch site (not verified in this build)", 25.9975, -97.1545, "space_site",
+      "Public information; not verified in this build.", "public information (not verified in this build)"),
+    M("kourou", "Guiana Space Centre (Kourou, French Guiana): Europe's spaceport", 5.2360, -52.7750, "space_site",
+      "ESA funds about two-thirds of the budget; France's CNES operates the site; Ariane launches from here (Wikipedia). Position approximate.",
+      "Wikipedia (Guiana Space Centre)"),
+    M("alcantara", "Alcântara Space Center (Maranhão, Brazil): equatorial launch centre (2.3° south)", -2.3200, -44.3800, "space_site",
+      "Brazilian Air Force and space agency; about twenty foreign firms reported in talks to launch here (Rio Times, Jul 2026). A December 2025 launch failed within about a minute (Rio Times). Position approximate.",
+      "Rio Times (Jul 2026); Wikipedia (Alcântara Space Center)"),
+
+    # ---------- Cyber and signals (public status only) ----------
+    M("nsa_utah", "NSA Utah Data Center (Bluffdale, Utah) (not verified in this build)", 40.4700, -111.9100, "cyber_hub",
+      "Public information about the NSA data centre at Camp Williams; not verified in this build.", "public information (not verified in this build)"),
+    M("cse_ottawa", "Communications Security Establishment (Ottawa): Canada's signals-intelligence and cyber agency", 45.3800, -75.7200, "cyber_hub",
+      "Canada's signals-intelligence and cyber-security agency (CanadaInfo listing). Position approximate (Ottawa area; not verified in this build).",
+      "CanadaInfo (Canadian Armed Forces listing)"),
+
+    # ---------- Flashpoints and sovereignty disputes (press reporting; situation changes) ----------
+    M("falklands", "Falklands / Malvinas: sovereignty dispute; UK administers the islands and runs RAF Mount Pleasant", -51.7000, -58.0000, "flashpoint",
+      "Argentina claims the islands; the UK administers them and operates RAF Mount Pleasant (Wikipedia). Position approximate.",
+      "Wikipedia (RAF Navy Point; Falklands Naval Station)"),
+    M("greenland_talks", "Greenland: US-Denmark security talks (reported, Sep 2026)", 72.0000, -40.0000, "flashpoint",
+      "Reports in September 2026 describe a security agreement to host a US presence at two more Greenland sites; Denmark and Greenland say sovereignty is not transferred (RT, citing Reuters, 22 Sep 2026). Not confirmed in this build.",
+      "RT (22 Sep 2026, citing Reuters); The Watch (Sep 2026)"),
+
+    # ---------- Chokepoints and sea routes ----------
+    M("panama", "Panama Canal (Gatún locks): chokepoint between the Atlantic and the Pacific", 9.2600, -79.9200, "chokepoint",
+      "Drought-driven slot cuts: nine daily Neopanamax and 25 Panamax slots from 4 Sep 2026 (Cyprus Shipping News, Sep 2026); about 34 transits a day (2026 reporting). Position approximate.",
+      "Cyprus Shipping News (Sep 2026); Blooming (2026); Wikipedia (Panama Canal)"),
+    M("magellan", "Strait of Magellan (Chile): ships rerouting from Panama", -53.5000, -71.0000, "chokepoint",
+      "Chilean Navy data (via Bloomberg, Oct 2026): traffic rose more than 70% in August and September 2026 from a year earlier. Position approximate.",
+      "SupplyChainBrain (Bloomberg, 7 Oct 2026); Wikipedia (Strait of Magellan)"),
+    M("beagle", "Beagle Channel (Argentina-Chile) (not verified in this build)", -55.0000, -67.5000, "chokepoint",
+      "Public information: channel linking the Atlantic and the Pacific south of Tierra del Fuego. Not verified in this build.", "public information (not verified in this build)"),
+    M("bering", "Bering Strait (US-Russia) (not verified in this build)", 65.7500, -169.0000, "chokepoint",
+      "Public information: the strait between Alaska and Russia. Not verified in this build.", "public information (not verified in this build)"),
+    M("davis", "Davis Strait (Canada-Greenland) (not verified in this build)", 66.0000, -56.0000, "chokepoint",
+      "Public information: strait between Baffin Island and Greenland. Not verified in this build.", "public information (not verified in this build)"),
+    M("denmark", "Denmark Strait (Iceland-Greenland): part of the GIUK gap (not verified in this build)", 66.5000, -27.0000, "chokepoint",
+      "Public information: the Iceland-Greenland passage on the Greenland-Iceland-UK gap. Not verified in this build.", "public information (not verified in this build)"),
+    M("nares", "Nares Strait (Canada-Greenland) (not verified in this build)", 80.0000, -70.0000, "chokepoint",
+      "Public information: strait between Ellesmere Island and Greenland. Not verified in this build.", "public information (not verified in this build)"),
+    M("juan_de_fuca", "Strait of Juan de Fuca (Canada-US; Esquimalt approaches) (not verified in this build)", 48.2500, -123.4000, "chokepoint",
+      "Public information: the strait into Puget Sound and the approaches to CFB Esquimalt. Not verified in this build.", "public information (not verified in this build)"),
+    M("florida_straits", "Florida Straits (US-Cuba) (not verified in this build)", 23.5000, -81.0000, "chokepoint",
+      "Public information: strait between Florida and Cuba. Not verified in this build.", "public information (not verified in this build)"),
+    M("windward", "Windward Passage (Cuba-Haiti) (not verified in this build)", 20.0000, -73.9000, "chokepoint",
+      "Public information: passage between Cuba and Haiti. Not verified in this build.", "public information (not verified in this build)"),
+    M("yucatan", "Yucatán Channel (Cuba-Mexico) (not verified in this build)", 21.7000, -86.0000, "chokepoint",
+      "Public information: channel between Cuba and the Yucatán peninsula. Not verified in this build.", "public information (not verified in this build)"),
+
+    # ---------- Pipelines and export terminals ----------
+    M("trans_mountain", "Trans Mountain pipeline (Edmonton to Burnaby, British Columbia): expanded system since May 2024", 49.2400, -122.9300, "pipeline",
+      "Statistics Canada reports the expanded system has operated since May 2024 and the Westridge Marine Terminal in Burnaby ships crude to new markets. A second open season was planned for July 2026 (Bloomberg, May 2026). Position approximate.",
+      "Statistics Canada; Bloomberg (May 2026); Wikipedia (Trans Mountain pipeline)"),
+    M("line5", "Enbridge Line 5 (Straits of Mackinac, Michigan): about 540,000 bbl/d", 45.8200, -84.7300, "pipeline",
+      "From Superior, Wisconsin, through Michigan's Upper Peninsula to Sarnia, Ontario. A Bad River reroute was under construction as of March 2026 (MMcGin Investments, 2026). Position approximate.",
+      "MMcGin Investments (2026)"),
+    M("line61", "Enbridge Line 61 (Southern Access): Superior, Wisconsin to Flanagan, Illinois", 46.7200, -92.1000, "pipeline",
+      "1.2 million bbl/d through a 42-inch pipe; the largest crude line in the Enbridge system (MMcGin Investments, 2026). Position approximate.",
+      "MMcGin Investments (2026)"),
+    M("enterprise_eht", "Enterprise EHT crude export terminal (Texas Gulf Coast): 2.75 million bbl/d throughput (location not verified)", 29.7500, -95.0000, "pipeline",
+      "Throughput and export role from an industry analysis (MMcGin Investments, 2026). Exact location approximate; not verified in this build.",
+      "MMcGin Investments (2026); not verified in this build"),
+    M("ingleside", "Enbridge Ingleside crude export terminal (Texas Gulf Coast): 1.6 million bbl/d throughput (location not verified)", 27.8600, -97.2000, "pipeline",
+      "Throughput and export role from an industry analysis (MMcGin Investments, 2026). Exact location approximate; not verified in this build.",
+      "MMcGin Investments (2026); not verified in this build"),
+
+    # ---------- South American navies (public status only) ----------
+    M("itaguai", "Itaguaí Naval Complex (Rio de Janeiro): Madeira Island Submarine Base and the PROSUB shipyard", -22.8900, -43.7800, "submarine_base",
+      "Riachuelo-class conventional submarines are built and maintained here. The nuclear submarine SN10 Álvaro Alberto is under construction (keel laying planned for 2027; launch projected for 2037; Army Recognition, Mar 2026; Wikipedia). Position approximate.",
+      "Wikipedia (Madeira Island Submarine Base); Army Recognition (Mar 2026)"),
+    M("mar_del_plata", "Mar del Plata Naval Base (Argentina): submarine component", -38.0000, -57.5500, "submarine_base",
+      "Argentina's submarine force is based here; the 2027 draft budget authorises a credit of about US$2.3bn for three conventional submarines (Defesa em Foco, Oct 2026). Brazil has offered three Scorpènes built at Itaguaí (Meta-Defense, Oct 2026). Position approximate.",
+      "Defesa em Foco (Oct 2026); Meta-Defense (Oct 2026)"),
+    M("talcahuano", "Talcahuano (Chile): Chilean Navy submarine base (not verified in this build)", -36.7200, -73.1200, "submarine_base",
+      "Chile operates two Scorpène submarines (Meta-Defense, Oct 2026). The base location is public information and was not verified in this build.",
+      "Meta-Defense (Oct 2026); public information (not verified in this build)"),
+    M("callao", "Callao (Peru): Peruvian Navy base (not verified in this build)", -12.0500, -77.1500, "navy_base",
+      "Public information: principal Peruvian Navy port. Not verified in this build.", "public information (not verified in this build)"),
+    M("cartagena", "Cartagena (Colombia): Colombian Navy base (not verified in this build)", 10.3900, -75.5100, "navy_base",
+      "Public information: principal Colombian Navy base on the Caribbean coast. Not verified in this build.", "public information (not verified in this build)"),
+]
+
+for _m in MARKERS:
+    if _m["id"] == "vandenberg_icbm":
+        _m["aliases"] = ["minuteman iii", "minuteman", "vandenberg icbm"]
+
+# Nuclear plants listed in the WRI Global Power Plant Database for the United States, Canada, Mexico, Brazil and Argentina (generated).
+_WRI = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "wri_nuclear_sea.json")
+if os.path.exists(_WRI):
+    with open(_WRI, encoding="utf-8") as _f:
+        for _m in json.load(_f):
+            _m.pop("country_iso3", None)
+            _closed = ("Indian Point", "Pilgrim", "Oyster Creek", "Vermont Yankee", "San Onofre", "Kewaunee", "Crystal River", "Fort Calhoun", "Duane Arnold")
+            if any(c in _m["name"] for c in _closed):
+                _m["note"] = ("Listed in the WRI database (2018 data). This plant has since closed (public information; not verified in this build). "
+                              "Indian Point is in Buchanan, New York, not in India.") if "Indian Point" in _m["name"] else "Listed in the WRI database (2018 data). This plant has since closed (public information; not verified in this build)."
+            _m["aliases"] = [_m["name"].split(" (")[0].lower()]
+            MARKERS.append(_m)
