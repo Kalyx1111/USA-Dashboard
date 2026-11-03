@@ -309,3 +309,10 @@ if os.path.exists(_WRI):
                               "Indian Point is in Buchanan, New York, not in India.") if "Indian Point" in _m["name"] else "Listed in the WRI database (2018 data). This plant has since closed (public information; not verified in this build)."
             _m["aliases"] = [_m["name"].split(" (")[0].lower()]
             MARKERS.append(_m)
+
+# India rule (shared guard): nothing is plotted inside India's survey outline.
+try:
+    from .india_guard import clean_points as _india_points
+except ImportError:  # run as a plain script
+    from india_guard import clean_points as _india_points
+MARKERS = _india_points(MARKERS)

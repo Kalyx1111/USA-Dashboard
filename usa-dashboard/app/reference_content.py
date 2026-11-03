@@ -90,7 +90,7 @@ REFERENCE_ITEMS = [
      "text": "The 1967 Treaty of Tlatelolco makes Latin America and the Caribbean a nuclear-weapon-free zone (public information). Canada hosts no nuclear weapons of its own, and no South American state has declared any.",
      "source": "Treaty of Tlatelolco (1967; public information)", "date": "1967", "url": None, "connector": "reference"},
     {"category": "darkweb", "label": "Ransomware claims for the Americas are unverified group claims",
-     "text": "The Ransomware.live feed filtered to the Americas' country codes lists claims made by groups on their own leak sites. These claims are labelled unverified and are not confirmed victims.",
+     "text": "The Ransomware.live feed filtered to the Americas' country codes lists claims made by groups on their own leak sites. These are group claims, not confirmed victims.",
      "source": "Ransomware.live (v2 feed)", "date": "live", "url": None, "connector": "reference"},
     {"category": "wellbeing", "label": "World Happiness Report 2026: ranks for the Americas not verified in this build",
      "text": "The annual report ranks countries for wellbeing. The ranks for the countries in this frame were not verified in this build; check the report directly.",
